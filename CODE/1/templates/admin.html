@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %} Admin || Login {% endblock %}
+{% block admin %} active {% endblock %}
+
+{% block container %}
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+
+        <!-- <div class="col-lg-6 mt-5 mt-lg-0" align="center"> -->
+        <div class="card col-md-6 offset-md-3 mt-5">
+            <div class="card-title">
+                <div class="text-center p-3 ">
+                    <!-- <h5 class="card-title text-center"><i class="bi bi-person-circle" style="font-size: 60px;"></i></h5> -->
+
+                    <h2> Admin</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'admin_login' %}" method="post" role="form" class="php-email-form">
+                    <legend align="center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                             class="bi bi-person-heart" viewBox="0 0 16 16">
+                            <path d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z"/>
+                        </svg>
+                        <br>
+                       
+                    </legend>
+                    {% csrf_token %}
+                    <div class="row mb-4">
+                        <div class="col-md-12 form-group">
+                            <label for="name" style="text-align: left;display: block;">Admin</label>
+                            <input type="text" name="loginid" class="form-control" id="name" placeholder="Username"
+                                required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group mt-3 mt-md-0">
+                            <label for="name" style="text-align: left;display: block;">Password</label>
+
+                            <input type="password" class="form-control" name="pswd" id="email" placeholder="Password"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- <div class="text-center"><button type="submit">Send Message</button></div> -->
+                    <div class="mt-2 text-center">
+                        <input class="btn btn-block btn-success text-white" type="submit" value="Submit">
+                        <input class="btn btn-lg btn-dark text-white" type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+            <!-- Message -->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+    <!-- </div> -->
+</section><!-- End Contact Section -->
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Register User{% endblock title %}
+{% block register %} active {% endblock register %}
+
+
+{% block container %}
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+
+        <!-- <div class="col-lg-6 mt-5 mt-lg-0" align="center"> -->
+        <div class="card col-md-6 offset-md-3 mt-5">
+            <div class="card-title">
+                <div class="text-center p-3 ">
+                    <!-- <h5 class="card-title text-center"><i class="bi bi-person-circle" style="font-size: 60px;"></i></h5> -->
+
+                    <h2> Register</h2>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'user_register' %}" method="post" role="form" class="php-email-form">
+                    <legend align="center">
+        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+<path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+
+                    </legend>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <!-- <div class="text-center"><button type="submit">Send Message</button></div> -->
+                    <div class="mt-2 text-center pb-4">
+                        <input class="btn btn-lg btn-success text-white" type="submit" value="Submit">
+                        <input class="btn btn-lg btn-dark text-white" type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- </div> -->
+</section><!-- End Contact Section -->
+
+{% endblock container %}

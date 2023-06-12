@@ -1,0 +1,58 @@
+{% extends 'users/user_base.html'%}
+{%block content%}
+{% load static %}
+<style>
+h3{
+  margin-top: 6%;
+}
+table {
+  border-collapse: collapse;
+  width: 30%;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+<div class="slider slider-revolution revolution-slider  fullwidth">
+  <div class="shadowWrapper">
+<center>
+  <h3>Add Information to Test</h3>
+  <form action="{% url 'predict' %}" method="POST"  style="width:100%">
+    {% csrf_token %}
+  <table class="sm-table" cellspacing="5px" cellpadding="5%"; align="center">
+    <tr>
+        <th>Fields  </th>
+        <th>Input Values </th>
+    </tr>
+    <tr>
+        <td>No_of_reviews
+        </td>
+        <td><input type="number" name="No_of_reviews" min="1" max="1000" required > </td>
+    </tr>
+    <tr>
+        <td>No_of_ingredients
+        </td>
+        <td><input type="number" name="No_of_ ingredients" min="1" max="100" required > </td>
+    </tr>
+    <tr>
+        <td>No_of_servings
+        </td>
+        <td><input type="number" name="No_of_servings" min="0" max="100" required > </td>
+    </tr>
+    <tr>
+        <td>No_of_instructions
+        </td>
+        <td><input type="number" name="No_of_instructions" min="1" max="100" required > </td>
+    </tr>
+    
+  
+    <tr>
+        <td><button type="submit" class="sendmail alignright">Predict</button></td>
+             </tr>
+        
+        <h2><tr>Rating {{result}}</tr></h2>
+        </table>
+        </form>
+        </center>
+        </div></div>
+
+{%endblock%}

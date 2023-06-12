@@ -1,0 +1,51 @@
+{% extends 'admins/admin_base.html' %}
+{% block title %} User List {% endblock title %}
+{% block user_list %} active {% endblock %}
+
+
+{% block container %}
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+
+        <h2>User List</h2>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.no</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for user in data %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.loginid }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>
+                        <a href="/user_activate/?uid={{ user.id }}">{{ user.status|title }}</a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- </div> -->
+</section><!-- End Contact Section -->
+{% endblock %}
